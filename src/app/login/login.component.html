@@ -1,0 +1,11 @@
+<form>
+  <div class="form-group">
+    <label>Username</label>
+    <input type="text" class="form-control" placeholder="Email" [(ngModel)]="username"
+      [ngModelOptions]="{standalone: true}">
+    <label>Password</label>
+    <input type="password" class="form-control" placeholder="Password" [(ngModel)]="password"
+      [ngModelOptions]="{standalone: true}">
+  </div>
+  <button class="btn btn-success" (click)="loginHandler()">Sign in</button>
+</form>

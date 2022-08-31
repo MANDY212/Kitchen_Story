@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="search-hero" *ngIf="!isAdmin">
+    <input type="text" name="search" [(ngModel)]="searchText" placeholder="Search ">
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Add to Cart</th>
+      <th>Remove from Cart</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products | filter: searchText">
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td><button class="btn btn-success" (click)="addToCart(product.name)">&nbsp; Add &nbsp; </button></td>
+        <td><button class="btn btn-danger" (click)="removeFromCart(product.name)">Remove</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <table *ngIf="isAdmin" class="table table-hover">
+    <tr>
+      <td>
+        <input type="text" placeholder="Enter Product's name" [(ngModel)]="productName">
+      </td>
+      <td>
+        <input type="number" placeholder="Enter Product's price" [(ngModel)]="productPrice">
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <button class="btn btn-success" (click)="addProduct(productName, productPrice)"> Add Product </button>
+      </td>
+      <td>
+        <button class="btn btn-danger" (click)="removeProduct()">Remove Product</button>
+      </td>
+    </tr>
+  </table>
+  <button class="btn btn-success" *ngIf="!isAdmin" (click)="checkout()">Checkout</button>
+</div>
